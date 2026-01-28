@@ -1664,8 +1664,18 @@
 #define SPECIES_ZYGARDE_MEGA                            1547
 #define SPECIES_DRAMPA_MEGA                             1548
 #define SPECIES_FALINKS_MEGA                            1549
+//Fakemon
+#define SPECIES_BRAMBOA                                 1550
+#define SPECIES_COBRANCH                                1551
+#define SPECIES_MAMBOUGH                                1552
+#define SPECIES_HYEPUP                                  1553
+#define SPECIES_PYRENA                                  1554
+#define SPECIES_ASHAHAHA                                1555
+#define SPECIES_SQUIBLET                                1556
+#define SPECIES_PHANTINK                                1557
+#define SPECIES_MOLLUSKULL                              1558
 
-#define SPECIES_EGG                                     (SPECIES_FALINKS_MEGA + 1)
+#define SPECIES_EGG                                     (SPECIES_MOLLUSKULL + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

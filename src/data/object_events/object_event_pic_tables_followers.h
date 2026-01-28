@@ -6729,4 +6729,40 @@ static const struct SpriteFrameImage sPicTable_Pecharunt[] = {
 };
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_BRAMBOA
+static const struct SpriteFrameImage sPicTable_Bramboa[] = {
+    overworld_ascending_frames(gObjectEventPic_Bramboa, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Cobranch[] = {
+    overworld_ascending_frames(gObjectEventPic_Cobranch, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Mambough[] = {
+    overworld_ascending_frames(gObjectEventPic_Mambough, 4, 4),
+};
+#endif //P_FAMILY_BRAMBOA
+
+#if P_FAMILY_HYEPUP
+static const struct SpriteFrameImage sPicTable_Hyepup[] = {
+    overworld_ascending_frames(gObjectEventPic_Hyepup, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Pyrena[] = {
+    overworld_ascending_frames(gObjectEventPic_Pyrena, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Ashahaha[] = {
+    overworld_ascending_frames(gObjectEventPic_Ashahaha, 4, 4),
+};
+#endif //P_FAMILY_HYEPUP
+
+#if P_FAMILY_SQUIBLET
+static const struct SpriteFrameImage sPicTable_Squiblet[] = {
+    overworld_ascending_frames(gObjectEventPic_Squiblet, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Phantink[] = {
+    overworld_ascending_frames(gObjectEventPic_Phantink, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Molluskull[] = {
+    overworld_ascending_frames(gObjectEventPic_Molluskull, 4, 4),
+};
+#endif //P_FAMILY_SQUIBLET
+
 #endif //OW_POKEMON_OBJECT_EVENTS

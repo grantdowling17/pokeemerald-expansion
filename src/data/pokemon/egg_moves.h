@@ -6308,3 +6308,30 @@ static const u16 sFrigibaxEggMoveLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_FRIGIBAX
+
+#if P_FAMILY_BRAMBOA
+static const u16 sBramboaEggMoveLearnset[] = {
+    MOVE_CHARM,
+    MOVE_GRASS_WHISTLE,
+    MOVE_GRASSY_TERRAIN,
+    MOVE_UNAVAILABLE,
+};
+#endif //P_FAMILY_BRAMBOA
+
+#if P_FAMILY_HYEPUP
+static const u16 sHyepupEggMoveLearnset[] = {
+    MOVE_BEAT_UP,
+    MOVE_COUNTER,
+    MOVE_UNAVAILABLE,
+};
+#endif //P_FAMILY_HYEPUP
+
+#if P_FAMILY_SQUIBLET
+static const u16 sSquibletEggMoveLearnset[] = {
+    MOVE_HAZE,
+    MOVE_MIST,
+    MOVE_MUDDY_WATER,
+    MOVE_AQUA_JET,
+    MOVE_UNAVAILABLE,
+};
+#endif //P_FAMILY_SQUIBLET
