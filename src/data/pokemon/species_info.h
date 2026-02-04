@@ -468,10 +468,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 4,
         .weight = 68,
         .description = COMPOUND_STRING(
-            "Its flame sac is small, so energy is\n"
-            "always leaking out. This energy is\n"
-            "released from the dent atop\n"
-            "Fuecoco's head and flickers to and fro."),
+            "Its eyes are frequently unfocused,\n"
+            "which is an indication of its low\n"
+            "intelligence."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -533,10 +532,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 6,
         .weight = 157,
         .description = COMPOUND_STRING(
-            "The combination of Crocalor's fire\n"
-            "energy and overflowing vitality has\n"
-            "caused an egg-shaped fireball to\n"
-            "appear on the Pokémon's head."),
+            "Pyrena's laugh causes distress in\n"
+            "other Pokémon, preventing its\n"
+            "socialization with other species."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -597,10 +595,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 12,
         .weight = 240,
         .description = COMPOUND_STRING(
-            "Skeledirge's gentle singing\n"
-            "soothes the souls of all that hear it. It\n"
-            "burns its enemies to a crisp with\n"
-            "flames of over 5,400 degrees Fahrenheit."),
+            "Its constant laughter can be heard\n"
+            "all throughout the night. The laughter\n"
+            "frequently inspires nightmares in both\n"
+            "children and adults."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -662,10 +660,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 8,
         .weight = 41,
         .description = COMPOUND_STRING(
-            "Its strong legs let it easily swim\n"
-            "around in even fast-flowing rivers.\n"
-            "It likes to keep things tidy and is\n"
-            "prone to overthinking things."),
+            "Squiblet is frequently used as bait\n"
+            "to catch larger, more valuable\n"
+            "Pokémon."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -727,7 +724,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 30,
         .weight = 680,
         .description = COMPOUND_STRING(
-            "The hardworking Quaxwell observes\n"
+            "This Pokémon uses its\n"
             "people and Pokémon from various\n"
             "regions and incorporates their\n"
             "movements into its own dance routines."),
@@ -791,10 +788,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 105,
         .weight = 2800,
         .description = COMPOUND_STRING(
-            "A single kick from a Quaquaval can\n"
-            "send a truck rolling. This Pokémon\n"
-            "uses its powerful legs to perform\n"
-            "striking dances from far-off lands."),
+            "Damn, that's a big squid."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,

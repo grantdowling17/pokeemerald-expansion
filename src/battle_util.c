@@ -7668,6 +7668,11 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
             atkStage = gBattleMons[battlerAtk].statStages[STAT_SPDEF];
         }
     }
+    else if (moveEffect == EFFECT_GRASSASSINATE)
+    {
+    atkStat = gBattleMons[battlerAtk].speed;
+    atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
+    }
     else
     {
         if (IsBattleMovePhysical(move))

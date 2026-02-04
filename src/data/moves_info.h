@@ -21290,6 +21290,68 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_MalignantChain,
     },
 
+    [MOVE_GRASSASSINATE] =
+    {
+        .name = COMPOUND_STRING("GRASSASSINATE"),
+        .description = COMPOUND_STRING(
+            "Ambushes the target, striking from\n"
+            "the brush. Does more damage with\n"
+            "increased user speed."),
+        .effect = EFFECT_GRASSASSINATE,
+        .power = 110,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .battleAnimScript = gBattleAnimMove_Grassassinate,
+    },
+
+    [MOVE_HIDEOUS_LAUGH] =
+    {
+        .name = COMPOUND_STRING("Hideous Laugh"),
+        .description = COMPOUND_STRING(
+            "Wildly laughs at the opponent,\n"
+            "lowering both attacks and making\n"
+            "them likely to flinch."),
+        .effect = EFFECT_TAUNT,
+        .power = 0,
+        .type = TYPE_DARK,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1,
+            .chance = 100,
+        }, {
+            .moveEffect = MOVE_EFFECT_ATK_MINUS_1,
+            .chance = 100,
+        }),
+        .battleAnimScript = gBattleAnimMove_HideousLaugh,
+    },
+
+    [MOVE_SHADOW_DRAIN] =
+    {
+        .name = COMPOUND_STRING("Shadow Drain"),
+        .description = COMPOUND_STRING(
+            "Drains the targets life force,\n"
+            "healing for all of the damage dealt."),
+        .effect = EFFECT_ABSORB,
+        .power = 75,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .argument = { .absorbPercentage = 100 },
+        .battleAnimScript = gBattleAnimMove_ShadowDrain,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {
