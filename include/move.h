@@ -83,6 +83,7 @@ struct MoveInfo
     bool32 alwaysCriticalHit:1;
     u32 numAdditionalEffects:3; // limited to 7
     // Flags
+    bool32 ignoresRechargeOnKill:1;
     bool32 makesContact:1;
     bool32 ignoresProtect:1;
     bool32 magicCoatAffected:1;
@@ -336,6 +337,11 @@ static inline bool32 IsHealingMove(u32 moveId)
 static inline bool32 MoveIncreasesPowerToMinimizedTargets(u32 moveId)
 {
     return gMovesInfo[SanitizeMoveId(moveId)].minimizeDoubleDamage;
+}
+
+static inline bool32 MoveIgnoresRechargeOnKill(u32 moveId)
+{
+    return gMovesInfo[SanitizeMoveId(moveId)].ignoresRechargeOnKill;
 }
 
 static inline bool32 MoveIgnoresTargetAbility(u32 moveId)

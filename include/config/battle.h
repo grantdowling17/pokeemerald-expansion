@@ -78,6 +78,8 @@
 
 // Move accuracy settings
 #define B_TOXIC_NEVER_MISS          GEN_LATEST // In Gen6+, if Toxic is used by a Poison-type Pokémon, it will never miss.
+#define B_WILL_O_WISP_NEVER_MISS    GEN_LATEST // In Gen6+, if Will-O-Wisp is used by a Fire-type Pokémon, it will never miss.
+#define B_THUNDER_WAVE_NEVER_MISS   GEN_LATEST // In Gen6+, if Thunder Wave is used by an Electric-type Pokémon, it will never miss.
 #define B_MINIMIZE_DMG_ACC          GEN_LATEST // In Gen6+, moves that causes double damage to minimized Pokémon will also skip accuracy checks.
 #define B_BLIZZARD_HAIL             GEN_LATEST // In Gen4+, Blizzard bypasses accuracy checks if it's hailing.
 #define B_SHEER_COLD_ACC            GEN_LATEST // In Gen7+, Sheer Cold's base chance of hitting is reduced to 20% if the user isn't Ice-typed.

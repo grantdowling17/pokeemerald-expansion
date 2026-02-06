@@ -73,6 +73,8 @@
     F(UPDATED_ABILITY_DATA,      updatedAbilityData,      (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     /* Move accuracy settings */ \
     F(TOXIC_NEVER_MISS,          toxicNeverMiss,          (u32, GEN_COUNT - 1)) \
+    F(THUNDER_WAVE_NEVER_MISS,   thunderWaveNeverMiss,    (u32, GEN_COUNT - 1)) \
+    F(WILL_O_WISP_NEVER_MISS,    willOWispNeverMiss,      (u32, GEN_COUNT - 1)) \
     F(MINIMIZE_DMG_ACC,          minimizeDmgAcc,          (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(BLIZZARD_HAIL,             blizzardHail,            (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(SHEER_COLD_ACC,            sheerColdAcc,            (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \

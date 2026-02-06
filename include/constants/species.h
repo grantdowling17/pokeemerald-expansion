@@ -1670,7 +1670,7 @@
 #define SPECIES_MAMBOUGH                                1552
 #define SPECIES_HYEPUP                                  1553
 #define SPECIES_PYRENA                                  1554
-#define SPECIES_ASHAHAHA                                1555
+#define SPECIES_VULCACKLE                               1555
 #define SPECIES_SQUIBLET                                1556
 #define SPECIES_PHANTINK                                1557
 #define SPECIES_MOLLUSKULL                              1558

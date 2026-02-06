@@ -26869,19 +26869,19 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 
-    const u32 gMonFrontPic_Ashahaha[] = INCBIN_U32("graphics/pokemon/ashahaha/anim_front.4bpp.smol");
-    const u16 gMonPalette_Ashahaha[] = INCBIN_U16("graphics/pokemon/ashahaha/normal.gbapal");
-    const u32 gMonBackPic_Ashahaha[] = INCBIN_U32("graphics/pokemon/ashahaha/back.4bpp.smol");
-    const u16 gMonShinyPalette_Ashahaha[] = INCBIN_U16("graphics/pokemon/ashahaha/shiny.gbapal");
-    const u8 gMonIcon_Ashahaha[] = INCBIN_U8("graphics/pokemon/ashahaha/icon.4bpp");
+    const u32 gMonFrontPic_Vulcackle[] = INCBIN_U32("graphics/pokemon/vulcackle/anim_front.4bpp.smol");
+    const u16 gMonPalette_Vulcackle[] = INCBIN_U16("graphics/pokemon/vulcackle/normal.gbapal");
+    const u32 gMonBackPic_Vulcackle[] = INCBIN_U32("graphics/pokemon/vulcackle/back.4bpp.smol");
+    const u16 gMonShinyPalette_Vulcackle[] = INCBIN_U16("graphics/pokemon/vulcackle/shiny.gbapal");
+    const u8 gMonIcon_Vulcackle[] = INCBIN_U8("graphics/pokemon/vulcackle/icon.4bpp");
 #if P_FOOTPRINTS
-    const u8 gMonFootprint_Ashahaha[] = INCBIN_U8("graphics/pokemon/ashahaha/footprint.1bpp");
+    const u8 gMonFootprint_Vulcackle[] = INCBIN_U8("graphics/pokemon/vulcackle/footprint.1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_Ashahaha[] = INCBIN_COMP("graphics/pokemon/ashahaha/overworld.4bpp");
+    const u32 gObjectEventPic_Vulcackle[] = INCBIN_COMP("graphics/pokemon/vulcackle/overworld.4bpp");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    const u16 gOverworldPalette_Ashahaha[] = INCBIN_U16("graphics/pokemon/ashahaha/overworld_normal.gbapal");
-    const u16 gShinyOverworldPalette_Ashahaha[] = INCBIN_U16("graphics/pokemon/ashahaha/overworld_shiny.gbapal");
+    const u16 gOverworldPalette_Vulcackle[] = INCBIN_U16("graphics/pokemon/vulcackle/overworld_normal.gbapal");
+    const u16 gShinyOverworldPalette_Vulcackle[] = INCBIN_U16("graphics/pokemon/vulcackle/overworld_shiny.gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_HYEPUP

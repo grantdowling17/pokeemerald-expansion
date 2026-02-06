@@ -36232,7 +36232,7 @@ static const u16 sPyrenaTeachableLearnset[] = {
     MOVE_UNAVAILABLE,         
 };
 
-static const u16 sAshahahaTeachableLearnset[] = {
+static const u16 sVulcackleTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_PROTECT,
     MOVE_REST,

@@ -309,8 +309,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Bramboa
         )
         .levelUpLearnset = sBramboaLevelUpLearnset,
-        .teachableLearnset = sSprigatitoTeachableLearnset,
-        .eggMoveLearnset = sSprigatitoEggMoveLearnset,
+        .teachableLearnset = sBramboaTeachableLearnset,
+        .eggMoveLearnset = sBramboaEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_COBRANCH}),
     },
 
@@ -373,7 +373,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Cobranch
         )
         .levelUpLearnset = sCobranchLevelUpLearnset,
-        .teachableLearnset = sFloragatoTeachableLearnset,
+        .teachableLearnset = sCobranchTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_MAMBOUGH}),
     },
 
@@ -437,7 +437,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Mambough
         )
         .levelUpLearnset = sMamboughLevelUpLearnset,
-        .teachableLearnset = sMeowscaradaTeachableLearnset,
+        .teachableLearnset = sMamboughTeachableLearnset,
     },
 #endif //P_FAMILY_BRAMBOA
 
@@ -501,8 +501,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Hyepup
         )
         .levelUpLearnset = sHyepupLevelUpLearnset,
-        .teachableLearnset = sFuecocoTeachableLearnset,
-        .eggMoveLearnset = sFuecocoEggMoveLearnset,
+        .teachableLearnset = sHyepupTeachableLearnset,
+        .eggMoveLearnset = sHyepupEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_PYRENA}),
     },
 
@@ -565,11 +565,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Pyrena
         )
         .levelUpLearnset = sPyrenaLevelUpLearnset,
-        .teachableLearnset = sCrocalorTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_ASHAHAHA}),
+        .teachableLearnset = sPyrenaTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_VULCACKLE}),
     },
 
-    [SPECIES_ASHAHAHA] =
+    [SPECIES_VULCACKLE] =
     {
         .baseHP        = 104,
         .baseAttack    = 105,
@@ -588,9 +588,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_STRONG_JAW },
         .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("Ashahaha"),
+        .speciesName = _("Vulcackle"),
         .cryId = CRY_SKELEDIRGE,
-        .natDexNum = NATIONAL_DEX_ASHAHAHA,
+        .natDexNum = NATIONAL_DEX_VULCACKLE,
         .categoryName = _("Gnawer"),
         .height = 12,
         .weight = 240,
@@ -603,33 +603,33 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .pokemonOffset = 17,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ashahaha,
+        .frontPic = gMonFrontPic_Vulcackle,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 5,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Ashahaha,
+        .backPic = gMonBackPic_Vulcackle,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 8,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Ashahaha,
-        .shinyPalette = gMonShinyPalette_Ashahaha,
-        .iconSprite = gMonIcon_Ashahaha,
+        .palette = gMonPalette_Vulcackle,
+        .shinyPalette = gMonShinyPalette_Vulcackle,
+        .iconSprite = gMonIcon_Vulcackle,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         SHADOW(6, 7, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Ashahaha)
+        FOOTPRINT(Vulcackle)
         OVERWORLD(
-            sPicTable_Ashahaha,
+            sPicTable_Vulcackle,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
             sAnimTable_Following,
-            gOverworldPalette_Ashahaha,
-            gShinyOverworldPalette_Ashahaha
+            gOverworldPalette_Vulcackle,
+            gShinyOverworldPalette_Vulcackle
         )
-        .levelUpLearnset = sAshahahaLevelUpLearnset,
-        .teachableLearnset = sSkeledirgeTeachableLearnset,
+        .levelUpLearnset = sVulcackleLevelUpLearnset,
+        .teachableLearnset = sVulcackleTeachableLearnset,
     },
 #endif //P_FAMILY_HYEPUP
 
@@ -693,8 +693,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Squiblet
         )
         .levelUpLearnset = sSquibletLevelUpLearnset,
-        .teachableLearnset = sQuaxlyTeachableLearnset,
-        .eggMoveLearnset = sQuaxlyEggMoveLearnset,
+        .teachableLearnset = sSquibletTeachableLearnset,
+        .eggMoveLearnset = sSquibletEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_PHANTINK}),
     },
 
@@ -758,7 +758,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Phantink
         )
         .levelUpLearnset = sPhantinkLevelUpLearnset,
-        .teachableLearnset = sQuaxwellTeachableLearnset,
+        .teachableLearnset = sPhantinkTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_MOLLUSKULL}),
     },
 
@@ -819,7 +819,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyOverworldPalette_Molluskull
         )
         .levelUpLearnset = sMolluskullLevelUpLearnset,
-        .teachableLearnset = sQuaquavalTeachableLearnset,
+        .teachableLearnset = sMolluskullTeachableLearnset,
     },
 #endif //P_FAMILY_SQUIBLET
 

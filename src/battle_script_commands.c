@@ -3359,7 +3359,7 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
         }
         break;
     case MOVE_EFFECT_RECHARGE:
-        if (B_SKIP_RECHARGE == GEN_1 && !IsBattlerAlive(gBattlerTarget))  // Skip recharge if gen 1 and foe is KO'd
+        if ((B_SKIP_RECHARGE == GEN_1 || MoveIgnoresRechargeOnKill(gCurrentMove)) && !IsBattlerAlive(gBattlerTarget))  // Skip recharge if gen 1 and foe is KO'd
             break;
 
         gDisableStructs[gEffectBattler].rechargeTimer = 2;

@@ -6748,8 +6748,8 @@ static const struct SpriteFrameImage sPicTable_Hyepup[] = {
 static const struct SpriteFrameImage sPicTable_Pyrena[] = {
     overworld_ascending_frames(gObjectEventPic_Pyrena, 4, 4),
 };
-static const struct SpriteFrameImage sPicTable_Ashahaha[] = {
-    overworld_ascending_frames(gObjectEventPic_Ashahaha, 4, 4),
+static const struct SpriteFrameImage sPicTable_Vulcackle[] = {
+    overworld_ascending_frames(gObjectEventPic_Vulcackle, 4, 4),
 };
 #endif //P_FAMILY_HYEPUP
 
