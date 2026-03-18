@@ -165,7 +165,8 @@ static bool32 AI_DoesChoiceEffectBlockMove(u32 battler, u32 move)
     // Choice locked into something else
     if (gAiLogicData->lastUsedMove[battler] != MOVE_NONE && gAiLogicData->lastUsedMove[battler] != move
     && (IsHoldEffectChoice(GetBattlerHoldEffect(battler) && IsBattlerItemEnabled(battler))
-        || gBattleMons[battler].ability == ABILITY_GORILLA_TACTICS))
+        || gBattleMons[battler].ability == ABILITY_GORILLA_TACTICS
+        || gBattleMons[battler].ability == ABILITY_SAGE_POWER))
         return TRUE;
     return FALSE;
 }
@@ -1572,7 +1573,7 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
         !((gFieldStatuses & STATUS_FIELD_MAGIC_ROOM) || ability == ABILITY_KLUTZ)))
     {
         // Stealth Rock
-        if (IsHazardOnSide(side, HAZARDS_STEALTH_ROCK) && heldItemEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS)
+        if (IsHazardOnSide(side, HAZARDS_STEALTH_ROCK) && heldItemEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS && ability != ABILITY_MOUNTAINEER)
             hazardDamage += GetStealthHazardDamageByTypesAndHP(TYPE_SIDE_HAZARD_POINTED_STONES, defType1, defType2, battleMon->maxHP);
         // G-Max Steelsurge
         if (IsHazardOnSide(side, HAZARDS_STEELSURGE) && heldItemEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS)

@@ -1619,7 +1619,7 @@ static inline u32 GetHoldEffectCritChanceIncrease(u32 battler, enum HoldEffect h
         break;
     case HOLD_EFFECT_LEEK:
         if (IsBattlerLeekAffected(battler, holdEffect))
-            critStageIncrease = 2;
+            critStageIncrease = 1;
         break;
     default:
         critStageIncrease = 0;
@@ -1650,6 +1650,7 @@ s32 CalcCritChanceStage(u32 battlerAtk, u32 battlerDef, u32 move, bool32 recordA
                     + GetMoveCriticalHitStage(move)
                     + GetHoldEffectCritChanceIncrease(battlerAtk, holdEffectAtk)
                     + ((B_AFFECTION_MECHANICS == TRUE && GetBattlerAffectionHearts(battlerAtk) == AFFECTION_FIVE_HEARTS) ? 2 : 0)
+                    + ((abilityAtk == ABILITY_BLADEMASTER && IsSlicingMove(move)) ? 1 : 0)
                     + (abilityAtk == ABILITY_SUPER_LUCK ? 1 : 0)
                     + gBattleMons[battlerAtk].volatiles.bonusCritStages;
 
@@ -2905,7 +2906,7 @@ void StealTargetItem(u8 battlerStealer, u8 itemBattler)
     BtlController_EmitSetMonData(itemBattler, B_COMM_TO_CONTROLLER, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[itemBattler].item), &gBattleMons[itemBattler].item);  // remove target item
     MarkBattlerForControllerExec(itemBattler);
 
-    if (GetBattlerAbility(itemBattler) != ABILITY_GORILLA_TACTICS)
+    if (GetBattlerAbility(itemBattler) != ABILITY_GORILLA_TACTICS && GetBattlerAbility(itemBattler) != ABILITY_SAGE_POWER)
         gBattleStruct->choicedMove[itemBattler] = MOVE_NONE;
 
     TrySaveExchangedItem(itemBattler, gLastUsedItem);
@@ -2982,11 +2983,13 @@ static void SetNonVolatileStatus(u32 effectBattler, enum MoveEffect effect, cons
         break;
     case MOVE_EFFECT_POISON:
         gBattleMons[effectBattler].status1 |= STATUS1_POISON;
-        gBattlescriptCurrInstr = BattleScript_MoveEffectPoison;
+        if (gBattleMons[effectBattler].ability != ABILITY_TOXIC_BOOST)
+            gBattlescriptCurrInstr = BattleScript_MoveEffectPoison;
         break;
     case MOVE_EFFECT_BURN:
         gBattleMons[effectBattler].status1 |= STATUS1_BURN;
-        gBattlescriptCurrInstr = BattleScript_MoveEffectBurn;
+        if (gBattleMons[effectBattler].ability != ABILITY_FLARE_BOOST)
+            gBattlescriptCurrInstr = BattleScript_MoveEffectBurn;
         break;
     case MOVE_EFFECT_FREEZE:
         gBattleMons[effectBattler].status1 |= STATUS1_FREEZE;
@@ -2998,7 +3001,8 @@ static void SetNonVolatileStatus(u32 effectBattler, enum MoveEffect effect, cons
         break;
     case MOVE_EFFECT_TOXIC:
         gBattleMons[effectBattler].status1 |= STATUS1_TOXIC_POISON;
-        gBattlescriptCurrInstr = BattleScript_MoveEffectToxic;
+        if (gBattleMons[effectBattler].ability != ABILITY_TOXIC_BOOST)
+            gBattlescriptCurrInstr = BattleScript_MoveEffectToxic;
         break;
     case MOVE_EFFECT_FROSTBITE:
         gBattleMons[effectBattler].status1 |= STATUS1_FROSTBITE;
@@ -3406,6 +3410,19 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
     case MOVE_EFFECT_RECOIL_HP_25: // Struggle
     {
         s32 recoil = (gBattleMons[gEffectBattler].maxHP) / 4;
+        if (recoil == 0)
+            recoil = 1;
+        if (GetBattlerAbility(gEffectBattler) == ABILITY_PARENTAL_BOND)
+            recoil *= 2;
+        SetPassiveDamageAmount(gEffectBattler, recoil);
+        TryUpdateEvolutionTracker(IF_RECOIL_DAMAGE_GE, gBattleStruct->passiveHpUpdate[gBattlerAttacker], MOVE_NONE);
+        BattleScriptPush(battleScript);
+        gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
+        break;
+    }
+    case MOVE_EFFECT_RECOIL_HP_33:
+    {
+        s32 recoil = (gBattleMons[gEffectBattler].maxHP) / 3;
         if (recoil == 0)
             recoil = 1;
         if (GetBattlerAbility(gEffectBattler) == ABILITY_PARENTAL_BOND)
@@ -5825,7 +5842,7 @@ static bool32 HandleMoveEndMoveBlock(u32 moveEffect)
             }
             gLastUsedItem = gBattleMons[gBattlerTarget].item;
             gBattleMons[gBattlerTarget].item = 0;
-            if (gBattleMons[gBattlerTarget].ability != ABILITY_GORILLA_TACTICS)
+            if (gBattleMons[gBattlerTarget].ability != ABILITY_GORILLA_TACTICS && gBattleMons[gBattlerTarget].ability != ABILITY_SAGE_POWER)
                 gBattleStruct->choicedMove[gBattlerTarget] = MOVE_NONE;
             CheckSetUnburden(gBattlerTarget);
 
@@ -7950,7 +7967,7 @@ void TryHazardsOnSwitchIn(u32 battler, u32 side, enum Hazards hazardType)
         }
         break;
     case HAZARDS_STEALTH_ROCK:
-        if (IsBattlerAffectedByHazards(battler, FALSE) && GetBattlerAbility(battler) != ABILITY_MAGIC_GUARD)
+        if (IsBattlerAffectedByHazards(battler, FALSE) && GetBattlerAbility(battler) != ABILITY_MAGIC_GUARD && GetBattlerAbility(battler) != ABILITY_MOUNTAINEER)
         {
             gBattleStruct->passiveHpUpdate[battler] = GetStealthHazardDamage(TYPE_SIDE_HAZARD_POINTED_STONES, battler);
             if (gBattleStruct->passiveHpUpdate[battler] != 0)
@@ -11020,10 +11037,24 @@ static void Cmd_tryKO(void)
     else
     {
         u32 lands = NO_HIT;
+
+        struct DamageContext ctx = {0};
+                    ctx.battlerAtk = gBattlerAttacker;
+                    ctx.battlerDef = gBattlerTarget;
+                    ctx.move = gCurrentMove;
+                    ctx.chosenMove = gCurrentMove;
+                    ctx.moveType = GetMoveType(gCurrentMove);
+                    ctx.updateFlags = FALSE;
+                    ctx.abilityAtk = GetBattlerAbility(gBattlerAttacker);
+                    ctx.abilityDef = GetBattlerAbility(gBattlerTarget);
+                    ctx.holdEffectAtk = GetBattlerHoldEffect(gBattlerAttacker);
+                    ctx.holdEffectDef = GetBattlerHoldEffect(gBattlerTarget);
+
         if (gBattleMons[gBattlerTarget].level > gBattleMons[gBattlerAttacker].level)
             lands = NO_HIT;
         else if ((gBattleMons[gBattlerTarget].volatiles.lockOn && gDisableStructs[gBattlerTarget].battlerWithSureHit == gBattlerAttacker)
               || IsAbilityAndRecord(gBattlerAttacker, GetBattlerAbility(gBattlerAttacker), ABILITY_NO_GUARD)
+              || (IsAbilityAndRecord(gBattlerAttacker, GetBattlerAbility(gBattlerAttacker), ABILITY_FATAL_PRECISION) && CalcTypeEffectivenessMultiplier(&ctx) >= UQ_4_12(2.0))
               || IsAbilityAndRecord(gBattlerTarget, targetAbility, ABILITY_NO_GUARD))
             lands = SURE_HIT;
         else if (IsSemiInvulnerable(gBattlerTarget, CHECK_ALL))
@@ -12766,9 +12797,9 @@ static void Cmd_tryswapitems(void)
             BtlController_EmitSetMonData(gBattlerTarget, B_COMM_TO_CONTROLLER, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item), &gBattleMons[gBattlerTarget].item);
             MarkBattlerForControllerExec(gBattlerTarget);
 
-            if (GetBattlerAbility(gBattlerTarget) != ABILITY_GORILLA_TACTICS)
+            if (GetBattlerAbility(gBattlerTarget) != ABILITY_GORILLA_TACTICS && GetBattlerAbility(gBattlerTarget) != ABILITY_SAGE_POWER)
                 gBattleStruct->choicedMove[gBattlerTarget] = MOVE_NONE;
-            if (GetBattlerAbility(gBattlerAttacker) != ABILITY_GORILLA_TACTICS)
+            if (GetBattlerAbility(gBattlerAttacker) != ABILITY_GORILLA_TACTICS && GetBattlerAbility(gBattlerAttacker) != ABILITY_SAGE_POWER)
                 gBattleStruct->choicedMove[gBattlerAttacker] = MOVE_NONE;
 
             gBattlescriptCurrInstr = cmd->nextInstr;

@@ -2025,9 +2025,22 @@ bool32 ShouldTryOHKO(u32 battlerAtk, u32 battlerDef, enum Ability atkAbility, en
     if (!DoesBattlerIgnoreAbilityChecks(battlerAtk, atkAbility, move) && defAbility == ABILITY_STURDY)
         return FALSE;
 
+    struct DamageContext ctx = {0};
+            ctx.battlerAtk = gBattlerAttacker;
+            ctx.battlerDef = gBattlerTarget;
+            ctx.move = gCurrentMove;
+            ctx.chosenMove = gCurrentMove;
+            ctx.moveType = GetMoveType(gCurrentMove);
+            ctx.updateFlags = FALSE;
+            ctx.abilityAtk = GetBattlerAbility(gBattlerAttacker);
+            ctx.abilityDef = GetBattlerAbility(gBattlerTarget);
+            ctx.holdEffectAtk = GetBattlerHoldEffect(gBattlerAttacker);
+            ctx.holdEffectDef = GetBattlerHoldEffect(gBattlerTarget);
+
     if (((gBattleMons[battlerDef].volatiles.lockOn
         && gDisableStructs[battlerDef].battlerWithSureHit == battlerAtk)
-        || atkAbility == ABILITY_NO_GUARD || defAbility == ABILITY_NO_GUARD)
+        || atkAbility == ABILITY_NO_GUARD || defAbility == ABILITY_NO_GUARD
+        || (atkAbility == ABILITY_FATAL_PRECISION && CalcTypeEffectivenessMultiplier(&ctx) >= UQ_4_12(2.0)))
         && gBattleMons[battlerAtk].level >= gBattleMons[battlerDef].level)
     {
         return TRUE;
@@ -3301,7 +3314,7 @@ static bool32 PartyBattlerShouldAvoidHazards(u32 currBattler, u32 switchBattler)
     if (holdEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS)
         return FALSE;
 
-    if (IsHazardOnSide(side, HAZARDS_STEALTH_ROCK))
+    if (IsHazardOnSide(side, HAZARDS_STEALTH_ROCK) && ability != ABILITY_MOUNTAINEER)
         hazardDamage += GetStealthHazardDamageByTypesAndHP(TYPE_SIDE_HAZARD_POINTED_STONES, type1, type2, maxHp);
     if (IsHazardOnSide(side, HAZARDS_STEELSURGE))
         hazardDamage += GetStealthHazardDamageByTypesAndHP(TYPE_SIDE_HAZARD_SHARP_STEEL, type1, type2, maxHp);
@@ -3362,6 +3375,7 @@ enum AIPivot ShouldPivot(u32 battlerAtk, u32 battlerDef, enum Ability defAbility
                         || (AI_BattlerAtMaxHp(battlerDef) && (gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_FOCUS_SASH
                         || (GetConfig(CONFIG_STURDY) >= GEN_5 && defAbility == ABILITY_STURDY)
                         || defAbility == ABILITY_MULTISCALE
+                        || defAbility == ABILITY_BLUBBER_DEFENSE
                         || defAbility == ABILITY_SHADOW_SHIELD))))
                         return SHOULD_PIVOT;   // pivot to break sash/sturdy/multiscale
                 }
@@ -3370,6 +3384,7 @@ enum AIPivot ShouldPivot(u32 battlerAtk, u32 battlerDef, enum Ability defAbility
                     if (!IsBattleMoveStatus(move) && (AI_BattlerAtMaxHp(battlerDef) && (gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_FOCUS_SASH
                         || (GetConfig(CONFIG_STURDY) >= GEN_5 && defAbility == ABILITY_STURDY)
                         || defAbility == ABILITY_MULTISCALE
+                        || defAbility == ABILITY_BLUBBER_DEFENSE
                         || defAbility == ABILITY_SHADOW_SHIELD)))
                         return SHOULD_PIVOT;   // pivot to break sash/sturdy/multiscale
 
@@ -3806,7 +3821,7 @@ bool32 IsFlinchGuaranteed(u32 battlerAtk, u32 battlerDef, u32 move)
 bool32 HasChoiceEffect(u32 battler)
 {
     enum Ability ability = gAiLogicData->abilities[battler];
-    if (ability == ABILITY_GORILLA_TACTICS)
+    if (ability == ABILITY_GORILLA_TACTICS || ability == ABILITY_SAGE_POWER)
         return TRUE;
 
     if (ability == ABILITY_KLUTZ)
@@ -6074,6 +6089,10 @@ s32 BattlerBenefitsFromAbilityScore(u32 battler, enum Ability ability, struct Ai
         if (HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
             return BEST_EFFECT;
         break;
+    case ABILITY_FELINE_PROWESS:
+    if (HasMoveWithCategory(battler, DAMAGE_CATEGORY_SPECIAL))
+            return BEST_EFFECT;
+        break;
     // Also used to Worry Seed WORRY_SEED
     case ABILITY_INSOMNIA:
     case ABILITY_VITAL_SPIRIT:
@@ -6112,6 +6131,22 @@ s32 BattlerBenefitsFromAbilityScore(u32 battler, enum Ability ability, struct Ai
     case ABILITY_NO_GUARD:
         if (HasMoveWithLowAccuracy(battler, LEFT_FOE(battler), LOW_ACCURACY_THRESHOLD, FALSE)
          || HasMoveWithLowAccuracy(battler, RIGHT_FOE(battler), LOW_ACCURACY_THRESHOLD, FALSE))
+            return GOOD_EFFECT;
+        break;
+    case ABILITY_FATAL_PRECISION:
+        struct DamageContext ctx = {0};
+            ctx.battlerAtk = gBattlerAttacker;
+            ctx.battlerDef = gBattlerTarget;
+            ctx.move = gCurrentMove;
+            ctx.chosenMove = gCurrentMove;
+            ctx.moveType = GetMoveType(gCurrentMove);
+            ctx.updateFlags = FALSE;
+            ctx.abilityAtk = GetBattlerAbility(gBattlerAttacker);
+            ctx.abilityDef = GetBattlerAbility(gBattlerTarget);
+            ctx.holdEffectAtk = GetBattlerHoldEffect(gBattlerAttacker);
+            ctx.holdEffectDef = GetBattlerHoldEffect(gBattlerTarget);
+        if (CalcTypeEffectivenessMultiplier(&ctx) >= UQ_4_12(2.0) && (HasMoveWithLowAccuracy(battler, LEFT_FOE(battler), LOW_ACCURACY_THRESHOLD, FALSE)
+         || HasMoveWithLowAccuracy(battler, RIGHT_FOE(battler), LOW_ACCURACY_THRESHOLD, FALSE)))
             return GOOD_EFFECT;
         break;
     // Toxic counter ticks upward while Poison Healed; losing Poison Heal while Toxiced can KO.

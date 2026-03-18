@@ -853,6 +853,7 @@ extern const u8 gBattleAnimMove_MalignantChain[];
 extern const u8 gBattleAnimMove_Grassassinate[];
 extern const u8 gBattleAnimMove_HideousLaugh[];
 extern const u8 gBattleAnimMove_ShadowDrain[];
+extern const u8 gBattleAnimMove_DracoBarrage[];
 extern const u8 gBattleAnimMove_BreakneckBlitz[];
 extern const u8 gBattleAnimMove_AllOutPummeling[];
 extern const u8 gBattleAnimMove_SupersonicSkystrike[];

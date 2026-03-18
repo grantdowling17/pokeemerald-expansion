@@ -1021,7 +1021,37 @@
 #define ITEM_DRAMPANITE 853
 #define ITEM_FALINKSITE 854
 
-#define ITEMS_COUNT 855
+//New TMs
+#define ITEM_TM101 855
+#define ITEM_TM102 856
+#define ITEM_TM103 857
+#define ITEM_TM104 858
+#define ITEM_TM105 859
+#define ITEM_TM106 860
+#define ITEM_TM107 861
+#define ITEM_TM108 862
+#define ITEM_TM109 863
+#define ITEM_TM110 864
+#define ITEM_TM111 865
+#define ITEM_TM112 866
+#define ITEM_TM113 867
+#define ITEM_TM114 868
+#define ITEM_TM115 869
+#define ITEM_TM116 870
+#define ITEM_TM117 871
+#define ITEM_TM118 872
+#define ITEM_TM119 873
+#define ITEM_TM120 874
+#define ITEM_TM121 875
+#define ITEM_TM122 876
+#define ITEM_TM123 877
+#define ITEM_TM124 878
+#define ITEM_TM125 879
+#define ITEM_TM126 880
+#define ITEM_TM127 881
+#define ITEM_TM128 882
+
+#define ITEMS_COUNT 883
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

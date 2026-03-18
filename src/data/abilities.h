@@ -2412,4 +2412,98 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+
+    [ABILITY_BLAZING_SOUL] =
+    {
+        .name = _("Blazing Soul"),
+        .description = COMPOUND_STRING("Gives priority to fire-type moves at full HP."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_BLADEMASTER] =
+    {
+        .name = _("Blademaster"),
+        .description = COMPOUND_STRING("Slicing moves are boosted and more likely to crit."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_STRIKER] =
+    {
+        .name = _("Striker"),
+        .description = COMPOUND_STRING("Boosts kicking moves."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_FELINE_PROWESS] =
+    {
+        .name = _("Feline Prowess"),
+        .description = COMPOUND_STRING("Raises special attack."),
+        .aiRating = 10,
+    },
+
+    [ABILITY_SAGE_POWER] =
+    {
+        .name = _("Sage Power"),
+        .description = COMPOUND_STRING("Ups Special Attack and locks move."),
+        .aiRating = 4,
+    },
+
+    [ABILITY_MOUNTAINEER] =
+    {
+        .name = _("Mountaineer"),
+        .description = COMPOUND_STRING("Immune to rock attacks and stealth rocks."),
+        .aiRating = 4,
+    },
+
+    [ABILITY_PRIMAL_ARMOR] =
+    {
+        .name = _("Primal Armor"),
+        .description = COMPOUND_STRING("Halves super effective damage."),
+        .aiRating = 4,
+    },
+
+    [ABILITY_SELF_SUFFICIENT] =
+    {
+        .name = _("Self Sufficient"),
+        .description = COMPOUND_STRING("Heals at the end of each turn."),
+        .aiRating = 3,
+    },
+
+    [ABILITY_BULL_RUSH] =
+    {
+        .name = _("Bull Rush"),
+        .description = COMPOUND_STRING("Boosts speed and attack on first turn."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_QUILL_RUSH] =
+    {
+        .name = _("Quill Rush"),
+        .description = COMPOUND_STRING("Boosts speed and attack on first turn."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_BLUBBER_DEFENSE] =
+    {
+        .name = _("Blubber Defense"),
+        .description = COMPOUND_STRING("Reduces damage at full HP."),
+        .aiRating = 8,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_FATAL_PRECISION] =
+    {
+        .name = _("Fatal Precision"),
+        .description = COMPOUND_STRING("Super-effective moves are boosted and cannot miss."),
+        .aiRating = 8,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_BONE_ZONE] =
+    {
+        .name = _("Bone Zone"),
+        .description = COMPOUND_STRING("Bone moves ignore immunities and resistances."),
+        .aiRating = 8,
+        .breakable = TRUE,
+    },
 };

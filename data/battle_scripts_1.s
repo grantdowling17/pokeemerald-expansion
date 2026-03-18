@@ -4857,6 +4857,15 @@ BattleScript_IceBodyHeal::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
+BattleScript_SelfSufficientHeal::
+	call BattleScript_AbilityPopUp
+	playanimation BS_ATTACKER, B_ANIM_SIMPLE_HEAL
+	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	printstring STRINGID_SELFSUFFICIENTHPGAIN
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_OverworldStatusStarts::
 	printfromtable gStartingStatusStringIds
 	waitmessage B_WAIT_TIME_LONG
@@ -5332,7 +5341,7 @@ BattleScript_GulpMissileNoDmgGulping:
 	playanimation BS_TARGET, B_ANIM_FORM_CHANGE
 	waitanimation
 	swapattackerwithtarget @ to make gStatDownStringIds down below print the right battler
-	setstatchanger STAT_DEF, 1, TRUE
+	setstatchanger STAT_SPEED, 1, TRUE
 	statbuffchange BS_TARGET, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_GulpMissileGulpingEnd
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
@@ -7159,6 +7168,22 @@ BattleScript_OwnTempoPrevents::
 	goto BattleScript_MoveEnd
 
 BattleScript_SoundproofProtected::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXBLOCKSY
+	waitmessage B_WAIT_TIME_LONG
+	setmoveresultflags MOVE_RESULT_DOESNT_AFFECT_FOE
+	goto BattleScript_MoveEnd
+
+BattleScript_BulletproofProtected::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXBLOCKSY
+	waitmessage B_WAIT_TIME_LONG
+	setmoveresultflags MOVE_RESULT_DOESNT_AFFECT_FOE
+	goto BattleScript_MoveEnd
+
+BattleScript_MountaineerProtected::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXBLOCKSY

@@ -18555,6 +18555,63 @@ gBattleAnimMove_ShadowDrain::
 	call UnsetPsychicBg
 	end
 
+gBattleAnimMove_DracoBarrage::
+	loadspritegfx ANIM_TAG_ROCKS @Rocks
+	loadspritegfx ANIM_TAG_FAIRY_LOCK_CHAINS @Gray Colour
+	loadspritegfx ANIM_TAG_WATER_GUN @Sparkles Trail
+	loadspritegfx ANIM_TAG_FIRE_PLUME @Eruption
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 1, 0, 12, RGB(1, 2, 11)
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_WATER_GUN, 0, 10, 10, RGB_PURPLE @;Purple
+	monbg ANIM_TARGET
+	setalpha 12, 8
+	waitforvisualfinish
+	playsewithpan SE_FALL, SOUND_PAN_ATTACKER
+	@setblends 0x80C
+	call DracoMeteor1
+	delay 7
+	call DracoMeteor2
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, 40, 32 @; For Meteor 1
+	createvisualtask AnimTask_HorizontalShake, 5, 5, 2, 1
+	delay 7
+	call DracoMeteor3
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, -8, 32 @; For Meteor 2
+	delay 7
+	call DracoMeteor4
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, 21, 32  @; For Meteor 3
+	delay 7
+	call DracoMeteor1
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, -8, 32  @; For Meteor 4
+	createvisualtask AnimTask_HorizontalShake, 5, 5, 2, 1
+	delay 7
+	call DracoMeteor2
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, 40, 32 @; For Meteor 1
+	delay 7
+	call DracoMeteor3
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, 21, 32  @; For Meteor 3
+	delay 15
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, 21, 32  @; For Meteor 3
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 2, 1
+	delay 7
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 1, 12, 0, RGB(1, 2, 11)
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
+	end	
+
 gBattleAnimMove_PopulationBomb::
 	loadspritegfx ANIM_TAG_CUT
 	monbg ANIM_TARGET

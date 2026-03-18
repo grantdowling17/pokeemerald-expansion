@@ -4755,6 +4755,16 @@ void SwapTurnOrder(u8 id1, u8 id2)
     SWAP(gBattlerByTurnOrder[id1], gBattlerByTurnOrder[id2], temp);
 }
 
+static inline u32 IsBattlerLeekAffected(u32 battler, enum HoldEffect holdEffect)
+{
+    if (holdEffect == HOLD_EFFECT_LEEK)
+    {
+        return GET_BASE_SPECIES_ID(gBattleMons[battler].species) == SPECIES_FARFETCHD
+            || gBattleMons[battler].species == SPECIES_SIRFETCHD;
+    }
+    return FALSE;
+}
+
 // For AI, so it doesn't 'cheat' by knowing player's ability
 u32 GetBattlerTotalSpeedStat(u32 battler, enum Ability ability, enum HoldEffect holdEffect)
 {
@@ -4771,6 +4781,8 @@ u32 GetBattlerTotalSpeedStat(u32 battler, enum Ability ability, enum HoldEffect 
             speed *= 2;
         else if (ability == ABILITY_CHLOROPHYLL && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA && gBattleWeather & B_WEATHER_SUN)
             speed *= 2;
+        else if (ability == ABILITY_FLOWER_GIFT  && (gBattleWeather & B_WEATHER_SUN))
+            speed *= 1.5;
         else if (ability == ABILITY_SAND_RUSH   && gBattleWeather & B_WEATHER_SANDSTORM)
             speed *= 2;
         else if (ability == ABILITY_SLUSH_RUSH  && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
@@ -4779,7 +4791,9 @@ u32 GetBattlerTotalSpeedStat(u32 battler, enum Ability ability, enum HoldEffect 
 
     // other abilities
     if (ability == ABILITY_QUICK_FEET && gBattleMons[battler].status1 & STATUS1_ANY)
-        speed = (speed * 150) / 100;
+        speed *= 2; //1.5->2
+    else if ((ability == ABILITY_BULL_RUSH || ability == ABILITY_QUILL_RUSH) && gDisableStructs[battler].isFirstTurn)
+        speed *= 1.5;
     else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
         speed *= 2;
     else if (ability == ABILITY_SLOW_START && gDisableStructs[battler].slowStartTimer != 0)
@@ -4806,6 +4820,8 @@ u32 GetBattlerTotalSpeedStat(u32 battler, enum Ability ability, enum HoldEffect 
         speed /= 2;
     else if (holdEffect == HOLD_EFFECT_CHOICE_SCARF && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
         speed = (speed * 150) / 100;
+    else if (IsBattlerLeekAffected(battler, holdEffect))
+        speed = (speed * 150) / 100;    
     else if (holdEffect == HOLD_EFFECT_QUICK_POWDER && gBattleMons[battler].species == SPECIES_DITTO && !(gBattleMons[battler].volatiles.transformed))
         speed *= 2;
 
@@ -4856,6 +4872,12 @@ s32 GetBattleMovePriority(u32 battler, enum Ability ability, u32 move)
     else if (ability == ABILITY_GALE_WINGS
           && (GetConfig(CONFIG_GALE_WINGS) < GEN_7 || IsBattlerAtMaxHp(battler))
           && GetMoveType(move) == TYPE_FLYING)
+    {
+        priority++;
+    }
+    else if (ability == ABILITY_BLAZING_SOUL
+          && IsBattlerAtMaxHp(battler)
+          && GetMoveType(move) == TYPE_FIRE)
     {
         priority++;
     }

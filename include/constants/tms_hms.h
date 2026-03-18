@@ -51,7 +51,85 @@
     F(STEEL_WING) \
     F(SKILL_SWAP) \
     F(SNATCH) \
-    F(OVERHEAT)
+    F(OVERHEAT) \
+    F(FLIP_TURN) \
+    F(HYPER_VOICE) \
+    F(SOLAR_BLADE) \
+    F(DRAGON_DANCE) \
+    F(DRAINING_KISS) \
+    F(METEOR_BEAM) \
+    F(LEECH_LIFE) \
+    F(RISING_VOLTAGE) \
+    F(DRAGON_PULSE) \
+    F(DRAIN_PUNCH) \
+    F(WILL_O_WISP) \
+    F(SILVER_WIND) \
+    F(VENOSHOCK) \
+    F(EXPLOSION) \
+    F(SHADOW_CLAW) \
+    F(STEEL_BEAM) \
+    F(POLTERGEIST) \
+    F(GIGA_IMPACT) \
+    F(ROCK_POLISH) \
+    F(TRIPLE_AXEL) \
+    F(STONE_EDGE) \
+    F(DRACO_BARRAGE) \
+    F(THUNDER_WAVE) \
+    F(GYRO_BALL) \
+    F(SWORDS_DANCE) \
+    F(STEALTH_ROCK) \
+    F(FLAME_CHARGE) \
+    F(LOW_SWEEP) \
+    F(DARK_PULSE) \
+    F(ROCK_SLIDE) \
+    F(X_SCISSOR) \
+    F(SLEEP_TALK) \
+    F(SCALD) \
+    F(POISON_JAB) \
+    F(FUTURE_SIGHT) \
+    F(GRASS_KNOT) \
+    F(SWAGGER) \
+    F(PLUCK) \
+    F(U_TURN) \
+    F(SUBSTITUTE) \
+    F(FLASH_CANNON) \
+    F(VOLT_SWITCH) \
+    F(DRAGON_TAIL) \
+    F(SCALE_SHOT) \
+    F(COSMIC_POWER) \
+    F(BULLDOZE) \
+    F(FROST_BREATH) \
+    F(WORK_UP) \
+    F(WILD_CHARGE) \
+    F(DUAL_WINGBEAT) \
+    F(POWER_UP_PUNCH) \
+    F(DAZZLING_GLEAM) \
+    F(SLUDGE_WAVE) \
+    F(PSYSHOCK) \
+    F(BRUTAL_SWING) \
+    F(ACROBATICS) \
+    F(TERRAIN_PULSE) \
+    F(SNARL) \
+    F(SUPERPOWER) \
+    F(SCORCHING_SANDS) \
+    F(SMACK_DOWN) \
+    F(MISTY_EXPLOSION) \
+    F(SPIKES) \
+    F(HEAT_CRASH) \
+    F(BODY_PRESS) \
+    F(TRICK_ROOM) \
+    F(BRAVE_BIRD) \
+    F(STEEL_ROLLER) \
+    F(COACHING) \
+    F(NATURE_POWER) \
+    F(ROOST) \
+    F(FOCUS_BLAST) \
+    F(ENERGY_BALL) \
+    F(GRASSY_GLIDE) \
+    F(EXPANDING_FORCE) \
+    F(HONE_CLAWS) \
+    F(CHARGE_BEAM) \
+    F(ICE_SPINNER)
 
 #define FOREACH_HM(F) \
     F(CUT) \
