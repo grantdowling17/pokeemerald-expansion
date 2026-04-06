@@ -2506,4 +2506,12 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 8,
         .breakable = TRUE,
     },
+
+    [ABILITY_BAD_COMPANY] =
+    {
+        .name = _("Bad Company"),
+        .description = COMPOUND_STRING("Prevents self-lowering stats and recoil."),
+        .aiRating = 8,
+        .breakable = TRUE,
+    },
 };

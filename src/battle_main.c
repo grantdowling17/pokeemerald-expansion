@@ -6008,14 +6008,7 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum Mo
         }
         break;
     case EFFECT_RAGING_BULL:
-        switch (species)
-        {
-        case SPECIES_TAUROS_PALDEA_COMBAT:
-        case SPECIES_TAUROS_PALDEA_BLAZE:
-        case SPECIES_TAUROS_PALDEA_AQUA:
-            return GetSpeciesType(species, 1);
-        }
-        break;
+        return GetSpeciesType(species, 1);
     case EFFECT_IVY_CUDGEL:
         switch (species)
         {

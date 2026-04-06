@@ -1029,7 +1029,7 @@ static enum ItemEffect RandomStatRaiseBerry(u32 battler, u32 itemId, ActivationT
         // MoodyCantRaiseStat requires that the battler is set to gBattlerAttacker
         gBattlerAttacker = gBattleScripting.battler = battler;
         gBattleScripting.statChanger = 0;
-        if (ability != ABILITY_CONTRARY)
+        if (ability != ABILITY_CONTRARY && ability != ABILITY_BAD_COMPANY)
             stat = RandomUniformExcept(RNG_RANDOM_STAT_UP, STAT_ATK, NUM_STATS - 1, MoodyCantRaiseStat);
         else
             stat = RandomUniformExcept(RNG_RANDOM_STAT_UP, STAT_ATK, NUM_STATS - 1, MoodyCantLowerStat);

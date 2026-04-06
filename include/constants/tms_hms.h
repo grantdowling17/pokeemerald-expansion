@@ -129,7 +129,34 @@
     F(EXPANDING_FORCE) \
     F(HONE_CLAWS) \
     F(CHARGE_BEAM) \
-    F(ICE_SPINNER)
+    F(ICE_SPINNER) \
+    F(ELECTROWEB) \
+    F(LOW_KICK) \
+    F(CLOSE_COMBAT) \
+    F(SEED_BOMB) \
+    F(HEAT_WAVE) \
+    F(ZEN_HEADBUTT) \
+    F(SUPERCELL_SLAM) \
+    F(HYDRO_PUMP) \
+    F(WEATHER_BALL) \
+    F(IRON_HEAD) \
+    F(AURA_SPHERE) \
+    F(HIGH_HORSEPOWER) \
+    F(LIQUIDATION) \
+    F(HURRICANE) \
+    F(AIR_SLASH) \
+    F(TEMPER_FLARE) \
+    F(STOMPING_TANTRUM) \
+    F(KNOCK_OFF) \
+    F(EARTH_POWER) \
+    F(THUNDER_PUNCH) \
+    F(FIRE_PUNCH) \
+    F(ICE_PUNCH) \
+    F(GUNK_SHOT) \
+    F(PSYCHIC_NOISE) \
+    F(VACUUM_WAVE) \
+    F(PLAY_ROUGH) \
+    F(DRACO_METEOR)    
 
 #define FOREACH_HM(F) \
     F(CUT) \

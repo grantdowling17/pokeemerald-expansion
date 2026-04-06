@@ -1214,6 +1214,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if (IsStatLoweringEffect(moveEffect))
                 RETURN_SCORE_MINUS(20);
             break;
+        case ABILITY_BAD_COMPANY:
+            if (IsStatLoweringEffect(moveEffect))
+                RETURN_SCORE_MINUS(10);
+            break;
         case ABILITY_COMATOSE:
             if (IsNonVolatileStatusMove(move))
                 RETURN_SCORE_MINUS(10);
@@ -3597,6 +3601,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             case ABILITY_CONTRARY:
             case ABILITY_DEFIANT:
+            case ABILITY_BAD_COMPANY:
             case ABILITY_COMPETITIVE:
                 if (IsStatLoweringEffect(effect) && isFriendlyFireOK && ShouldTriggerAbility(battlerAtk, battlerAtkPartner, atkPartnerAbility))
                 {

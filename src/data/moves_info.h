@@ -18748,7 +18748,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Gliding on ground, hits. Goes\n"
             "first on Grassy Terrain."),
         .effect = EFFECT_GRASSY_GLIDE,
-        .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 55 : 70,
+        .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 60 : 70,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 20,
@@ -19419,12 +19419,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 100 : 95,
         .type = TYPE_FAIRY,
-        .accuracy = 80,
+        .accuracy = 90,
         .pp = 5,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .windMove = TRUE,
+        .alwaysHitsInRain = TRUE,
         .metronomeBanned = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_ATK_MINUS_1,
@@ -19754,7 +19755,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 100 : 95,
         .type = TYPE_FLYING,
-        .accuracy = 80,
+        .accuracy = 90,
         .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 10 : 5,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
@@ -19764,6 +19765,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SPD_MINUS_1,
             .chance = 30,
+        }, {
+            .moveEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
+            .chance = 20,
         }),
         .battleAnimScript = gBattleAnimMove_BleakwindStorm,
     },
@@ -19777,7 +19781,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 100 : 95,
         .type = TYPE_ELECTRIC,
-        .accuracy = 80,
+        .accuracy = 90,
         .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 10 : 5,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
@@ -19800,7 +19804,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 100 : 95,
         .type = TYPE_GROUND,
-        .accuracy = 80,
+        .accuracy = 90,
         .pp = B_UPDATED_MOVE_DATA >= GEN_9 ? 10 : 5,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
@@ -20031,7 +20035,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Furiously strains its legs.\n"
             "Harshly lowers user's Speed."),
         .effect = EFFECT_HIT,
-        .power = 100,
+        .power = 110,
         .type = TYPE_STEEL,
         .accuracy = 100,
         .pp = 5,
@@ -20670,6 +20674,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
+        .pulseMove = TRUE, //boosted by mega launcher
         .metronomeBanned = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_DEF_SPDEF_DOWN,
@@ -21273,7 +21278,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "An electrified slam. If it\n"
             "misses, the user is hurt."),
         .effect = EFFECT_RECOIL_IF_MISS,
-        .power = 100,
+        .power = 120,
         .type = TYPE_ELECTRIC,
         .accuracy = 95,
         .pp = 15,

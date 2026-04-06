@@ -1022,7 +1022,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
 bool32 AI_IsDamagedByRecoil(u32 battler)
 {
     enum Ability ability = gAiLogicData->abilities[battler];
-    if (ability == ABILITY_MAGIC_GUARD || ability == ABILITY_ROCK_HEAD)
+    if (ability == ABILITY_MAGIC_GUARD || ability == ABILITY_ROCK_HEAD || ability == ABILITY_BAD_COMPANY)
         return FALSE;
     return TRUE;
 }
@@ -1254,7 +1254,7 @@ static bool32 AI_IsMoveEffectInMinus(u32 battlerAtk, u32 battlerDef, u32 move, s
                 case MOVE_EFFECT_V_CREATE:
                 case MOVE_EFFECT_ATK_DEF_DOWN:
                 case MOVE_EFFECT_DEF_SPDEF_DOWN:
-                    if ((additionalEffect->self && abilityAtk != ABILITY_CONTRARY)
+                    if ((additionalEffect->self && abilityAtk != ABILITY_CONTRARY && abilityAtk != ABILITY_BAD_COMPANY)
                         || (noOfHitsToKo > 1 && !additionalEffect->self && abilityDef == ABILITY_CONTRARY && !DoesBattlerIgnoreAbilityChecks(battlerAtk, abilityAtk, move)))
                         return TRUE;
                     break;
@@ -2217,6 +2217,9 @@ bool32 CanLowerStat(u32 battlerAtk, u32 battlerDef, struct AiLogicData *aiData, 
         case ABILITY_WHITE_SMOKE:
         case ABILITY_FULL_METAL_BODY:
             return FALSE;
+        case ABILITY_BAD_COMPANY:
+            if (IsSelfStatLoweringEffect(move)) 
+                return FALSE;
         case ABILITY_SHIELD_DUST:
             if (!IsBattleMoveStatus(move) && GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
                 return FALSE;
@@ -6073,6 +6076,10 @@ s32 BattlerBenefitsFromAbilityScore(u32 battler, enum Ability ability, struct Ai
             return BEST_EFFECT;
         if (HasMoveThatRaisesOwnStats(battler))
             return AWFUL_EFFECT;
+        break;
+    case ABILITY_BAD_COMPANY:
+        if (HasMoveThatLowersOwnStats(battler))
+            return GOOD_EFFECT;
         break;
     case ABILITY_FRIEND_GUARD:
     case ABILITY_POWER_SPOT:
